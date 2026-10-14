@@ -1,0 +1,43 @@
+[build-system]
+    build-backend = "setuptools.build_meta"
+    requires      = ["setuptools>=61", "wheel"]
+
+[project]
+    description     = "Control tasmota devices"
+    name            = "tasmota-control-center"
+    readme          = "README.md"
+    requires-python = ">=3.12"
+    version         = "0.0.1"
+
+    license = "AGPL-3.0-or-later"
+
+    authors = [{name = "Flo Greistorfer"}]
+
+    dependencies = []
+
+    [project.scripts]
+    tasmota-control-center = "tasmota_control_center.main:main"
+
+[dependency-groups]
+    dev = ["deptry", "pipreqs", "pyinstaller", "ruff"]
+
+[tool.setuptools.packages.find]
+    where = ["src"]
+
+[tool.setuptools.package-data]
+tasmota-control-center = []
+
+[tool.ruff]
+    line-length    = 140
+    target-version = "py312"
+
+    [tool.ruff.lint]
+        ignore = ["E501"]
+        select = ["B", "E", "F", "I", "UP"]
+
+    [tool.ruff.format]
+        indent-style = "space"
+        quote-style  = "double"
+
+[tool.deptry.per_rule_ignores]
+DEP003 = "tasmota_control_center"
